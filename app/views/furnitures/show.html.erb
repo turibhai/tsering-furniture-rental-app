@@ -1,10 +1,10 @@
 <h1>Furnitures#show</h1>
 <div class="container mt-5">
   <div class="card">
-    <h5><%= @furniture.name %></h5>
-    <p><%= @furniture.furniture_type %></p>
-    <p><%= @furniture.description%></p>
-    <p><%= @furniture.price %></p>
+    <h5>Nme: <%= @furniture.name %></h5>
+    <p>Type: <%= @furniture.furniture_type %></p>
+    <p>Description: <%= @furniture.description%></p>
+    <p>Price: <%= @furniture.price %></p>
   </div>
 </div>
 <%= render 'rentals/form', rental: @rental %>

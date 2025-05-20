@@ -1,22 +1,19 @@
-<h1>Furnitures#index</h1>
-<div class="container d-flex flex-wrap mt-5">
-  <div class="justify-content-center">
-    <ul>
-      <% @furnitures.each do |furniture| %>
-        <div class="card text-center m-3 round-3 border border-3" style="width: 400px;">
-          <div class="card-category d-felx align-item-center" style="height: 250px;">
-            <div class="card-body text-black text-start fs-6" style="flex: 1;">
-              <li>
-                <p><%= furniture.name %></p>
-                <p><%= furniture.furniture_type %></p>
-                <p><%= furniture.description %></p>
-                <p>$<%= furniture.price %></p>
-              </li>
-              <div class="card-image" style="flex: 2"; img src="<%= cl_image_path("#{furniture.photo.key}", width: 400, height: 250, crop: :fill) %>" alt=""></div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('banner.webp') %>);">
+  <div class="container">
+    <h1>Le Wagon brings <strong>Rent furniitures</strong>!</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Furnitures</h1>
+  </div>
+  <div class="cards">
+    <% @furnitures.each do |furniture| %>
+      <div class="card-category card-furniture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=cl_image_path("#{furniture.photo.key}", width: 280, height: 250, crop: :fill)%>)">
+        <p><%= furniture.name %></p>
+        <p>$<%= furniture.price %></p>
+        <%= link_to '', furniture_path(furniture), class:"card-link" %>
+      </div>
+    <% end %>
   </div>
 </div>

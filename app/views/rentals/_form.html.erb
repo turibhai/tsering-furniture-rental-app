@@ -5,9 +5,8 @@
   <%#=# f.submit class: "btn btn-flat mt-2" %>
   <%# end %>
   <div class="container">
-    <%= simple_form_for [@furniture, @rental] do |f| %>
+    <%= simple_form_for [furniture, rental] do |f| %>
       <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-      <%= f.input :status %>
-      <%= f.submit "Rent", class: 'btn btn-primary mt-3' %>
+      <%= f.submit "Rent",  class: 'btn btn-primary mt-3' %>
     <% end %>
   </div>

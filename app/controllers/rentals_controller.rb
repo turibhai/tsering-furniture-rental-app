@@ -1,20 +1,23 @@
 class RentalsController < ApplicationController
-  before_action :set_furniture, only: %i[new create]
 
   def index
     @rentals = Rental.all
+    @rentals = Rental.includes(:user, :furniture)
   end
 
   def create
+    @furniture = Furniture.find(params[:furniture_id])
     @rental = Rental.new(rental_params)
     @rental.furniture = @furniture
-    # dates = param[:furniture][:opening_date].split(' to ')
-    # @furniture.start_date = dates.first
-    # @furniture.end_date = dates.last
+    @rental.user = current_user
+    dates = params[:rental][:start_date].split(' to ')
+    @rental.start_date = dates.first
+    @rental.end_date = dates.last
+    @rental.status = 0
     if @rental.save
-      redirect_to furniture_rentals_path(@furniture), notice: 'Saved Successfully'
+      redirect_to rentals_path, notice: 'Saved Successfully'
     else
-      render 'furniture/show', status: :unprocessable_entity
+      render 'furnitures/show', status: :unprocessable_entity
     end
   end
 
@@ -24,13 +27,6 @@ class RentalsController < ApplicationController
     params.require(:rental).permit(:furniture_id, :user_id, :start_date, :end_date, :status)
   end
 
-  def furniture_params
-    params.require(:furniture).permit(:name, :type, :description, :user_id)
-  end
-
-  def set_furniture
-    @furniture = Furniture.find[params(:furniture_id)]
-  end
 end
 
 

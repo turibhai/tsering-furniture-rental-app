@@ -18,7 +18,12 @@
       </div>
     </div>
   </div>
-  <div class="custom-bg">
+  <div class="m-4 text-center">
+    <a class="btn btn-success" data-bs-toggle="collapse" href="#collapseDetails" role="button" aria-expanded="false" aria-controls="collapseExample">
+      More Details
+    </a>
+  </div>
+  <div id="collapseDetails" class="custom-bg mb-5 collapse">
     <p class="m-5"><strong>Description:</strong><br>
       <%= @furniture.description %></p>
   </div>

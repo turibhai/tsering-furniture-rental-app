@@ -1,2 +1,10 @@
 <h1>Furnitures#show</h1>
-<p>Find me in app/views/furnitures/show.html.erb</p>
+<div class="container mt-5">
+  <div class="card">
+    <h5><%= @furniture.name %></h5>
+    <p><%= @furniture.furniture_type %></p>
+    <p><%= @restaurant.description%></p>
+    <p><%= @restaurant.price %></p>
+  </div>
+</div>
+<%= render 'rentals/form', rental: @rentals %>

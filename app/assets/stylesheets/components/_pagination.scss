@@ -1,0 +1,25 @@
+.pages-list {
+    width: fit-content;
+    margin: 16px auto;
+}
+
+.pagination {
+    gap: 8px;
+
+    a {
+        background-color: $green;
+        padding: 0 8px;
+        color: black;
+        text-decoration: none;
+        border-radius: 4px;
+
+        &:hover {
+            box-shadow: 0 0 0 3px;
+            color: aqua;
+        }
+    }
+
+    .current{
+        font-weight: 700;
+    }
+}

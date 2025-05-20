@@ -1,6 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('banner.webp') %>);">
   <div class="container">
-    <h1>Le Wagon brings <strong>Rent furniitures</strong>!</h1>
+    <h1><strong>Welcome to Rent furnitures app</strong> </h1>
+    <p><strong>Rent furnitures</strong>!</p>
   </div>
 </div>
 <div class="container">
@@ -16,4 +17,5 @@
       </div>
     <% end %>
   </div>
+  <div class="pages-list"><%= paginate @furnitures %></div>
 </div>

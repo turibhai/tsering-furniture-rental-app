@@ -2,7 +2,8 @@ class FurnituresController < ApplicationController
   
 skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @furnitures = Furniture.all
+    page = params[:page] || 1
+    @furnitures = Furniture.page(page)
   end
 
   def show

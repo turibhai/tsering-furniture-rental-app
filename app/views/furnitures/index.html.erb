@@ -1,11 +1,22 @@
 <h1>Furnitures#index</h1>
-<ul>
-  <% @furnitures.each do |furniture| %>
-    <li>
-      <p><%= furniture.name %></p>
-      <p><%= furniture.furniture_type %></p>
-      <p><%= furniture.description %></p>
-      <p><%= furniture.price %></p>
-    </li>
-  <% end %>
-</ul>
+<div class="container d-flex flex-wrap mt-5">
+  <div class="justify-content-center">
+    <ul>
+      <% @furnitures.each do |furniture| %>
+        <div class="card text-center m-3 round-3 border border-3" style="width: 400px;">
+          <div class="card-category d-felx align-item-center" style="height: 250px;">
+            <div class="card-body text-black text-start fs-6" style="flex: 1;">
+              <li>
+                <p><%= furniture.name %></p>
+                <p><%= furniture.furniture_type %></p>
+                <p><%= furniture.description %></p>
+                <p>$<%= furniture.price %></p>
+              </li>
+              <div class="card-image" style="flex: 2"; img src="<%= cl_image_path("#{furniture.photo.key}", width: 400, height: 250, crop: :fill) %>" alt=""></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,2 +1,11 @@
 <h1>Furnitures#index</h1>
-<p>Find me in app/views/furnitures/index.html.erb</p>
+<ul>
+  <% @furnitures.each do |furniture| %>
+    <li>
+      <p><%= furniture.name %></p>
+      <p><%= furniture.furniture_type %></p>
+      <p><%= furniture.description %></p>
+      <p><%= furniture.price %></p>
+    </li>
+  <% end %>
+</ul>

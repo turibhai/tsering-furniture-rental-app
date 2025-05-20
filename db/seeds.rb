@@ -20,3 +20,19 @@ User.all.each do |user|
   end
   puts "I have seeded 20 furnitures"
 end
+
+# require "open-uri"
+# url = "https://furniture-api.fly.dev/v1/products"
+#  response = JSON.parse(URI.open(url).read)
+#  response['data'].each do |furniture_hash|
+#     puts "...creating the furniture #{furniture_hash['name']}..."
+#     puts
+#     # create an instance with the hash
+#     Furniture.create!(
+#       image_path: furniture_hash['image_path'],
+#       description: furniture_hash['description'],
+#       name: furniture_hash['name'],
+#       price: furniture_hash['price']
+#     )
+#   end
+# puts "... created #{Furniture.count} furnitures."

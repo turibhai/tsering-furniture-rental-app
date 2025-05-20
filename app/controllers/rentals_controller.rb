@@ -1,8 +1,7 @@
 class RentalsController < ApplicationController
 
   def index
-    @rentals = Rental.all
-    @rentals = Rental.includes(:user, :furniture)
+    @rentals = Rental.where(user: current_user)
   end
 
   def create
@@ -26,7 +25,6 @@ class RentalsController < ApplicationController
   def rental_params
     params.require(:rental).permit(:furniture_id, :user_id, :start_date, :end_date, :status)
   end
-
 end
 
 

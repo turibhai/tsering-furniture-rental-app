@@ -1,5 +1,20 @@
 <!-- Status page-->
 <h1>Rental Page</h1>
-<% @rentals.each do |rental| %>
-  <%= rental.user %>
-<% end %>
+
+<div class="container d-flex justify-content-center">
+  <div class="card-trip" style="width:280px">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <% @rentals.each do |rental| %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= rental.furniture.name %></h2>
+          <p><%= rental.furniture.furniture_type %> </p>
+          <p><%= rental.furniture.description %> </p>
+
+      </div>
+      <h2 class="card-trip-pricing">¥<%= rental.furniture.price %></h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -2,7 +2,7 @@ class RentalsController < ApplicationController
   before_action :set_furniture, only: %i[new create]
 
   def index
-    @rental = Rental.all
+    @rentals = Rental.all
   end
 
   def create

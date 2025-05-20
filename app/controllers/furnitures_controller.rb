@@ -6,6 +6,7 @@ class FurnituresController < ApplicationController
 
   def show
     @furniture = Furniture.find(params[:id])
+    @rental = Rental.new
   end
 
   # def create

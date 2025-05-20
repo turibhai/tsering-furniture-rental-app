@@ -1,16 +1,18 @@
 class RentalsController < ApplicationController
-  before_action :set_furniture, only: %i[new create]
 
   def index
-    @rentals = Rental.all
+    @furniture = Furniture.find(params[:furniture_id])
+    @rentals = @furniture.rentals
+    # @furniture = Furniture.find_by(params[:furniture_id])
+    # raise
   end
 
   def create
     @rental = Rental.new(rental_params)
     @rental.furniture = @furniture
     # dates = param[:furniture][:opening_date].split(' to ')
-    # @furniture.start_date = dates.first
-    # @furniture.end_date = dates.last
+    # @rental.start_date = dates.first
+    # @rental.end_date = dates.last
     if @rental.save
       redirect_to furniture_rentals_path(@furniture), notice: 'Saved Successfully'
     else
@@ -25,12 +27,9 @@ class RentalsController < ApplicationController
   end
 
   def furniture_params
-    params.require(:furniture).permit(:name, :type, :description, :user_id)
+    params.require(:furniture).permit(:name, :type, :description, :user_id, :price)
   end
 
-  def set_furniture
-    @furniture = Furniture.find[params(:furniture_id)]
-  end
 end
 
 

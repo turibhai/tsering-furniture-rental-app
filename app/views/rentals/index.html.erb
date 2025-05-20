@@ -1,7 +1,5 @@
 <!-- Status page-->
-<%= @furniture.rentals.each do |rental| %>
-  <%= rental.furniture.name %>
-
+<h1>Rental Page</h1>
+<% @rentals.each do |rental| %>
+  <%= rental.user %>
 <% end %>
-
-<h1>hello</h1>

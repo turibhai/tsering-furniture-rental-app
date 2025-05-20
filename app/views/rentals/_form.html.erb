@@ -4,9 +4,9 @@
   <%## f.input :rating, as: :select, collection: (1..5), required: true, label: false, input_html: { data: { controller: "star-rating" } } %>
   <%#=# f.submit class: "btn btn-flat mt-2" %>
   <%# end %>
-  <div class="container">
+  <div class="container text-start">
     <%= simple_form_for [furniture, rental] do |f| %>
       <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-      <%= f.submit "Rent",  class: 'btn btn-primary mt-3' %>
+      <%= f.submit "Rent",  class: 'btn btn-success mt-3 w-100' %>
     <% end %>
   </div>

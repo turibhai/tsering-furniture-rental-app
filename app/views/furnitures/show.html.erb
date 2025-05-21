@@ -1,14 +1,13 @@
 <h1 class="text-center my-4">Furniture Details</h1>
-<div class="container mb-3">
-  <div class="mt-4">
-    <div class="card shadow-sm rounded-3 overflow-hidden">
-      <div class="row g-0">
-        <!-- Image -->
-        <div class="col-md-5">
-          <%= image_tag cl_image_path(@furniture.photo.key, width: 500, height: 400, crop: :fit), alt: "", class: "img-fluid w-100 h-100 object-fit-cover" %>
-        </div>
-        <!-- furniture part -->
-        <div class="col-md-7 p-4"
+<div class="container mt-4 custom-container-bottom">
+  <div class="card shadow-sm rounded-3 overflow-hidden">
+    <div class="row g-0">
+      <!-- Image -->
+      <div class="col-md-5">
+        <%= image_tag cl_image_path(@furniture.photo.key, width: 500, height: 400, crop: :fill), alt: "", class: "img-fluid w-100 h-100 object-fit-cover" %>
+      </div>
+      <!-- furniture part -->
+      <div class="col-md-7 p-4"
      data-controller="range-tracker"
      data-range-tracker-price-value="<%= @furniture.price %>">
           <h3 class="card-title mb-3"><%= @furniture.name %></h3>

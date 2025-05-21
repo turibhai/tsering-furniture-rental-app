@@ -5,13 +5,17 @@ display: flex;
 gap: 24px;
 
 a {
-    display: iline-block;
+    display: inline-block;
     text-decoration: none; 
     color: inherit;
+   
 }
 
 .btn {
-  padding: 0px 0px;
+    padding: 8px 12px;
+    height: fit-content;
+    text-wrap: nowrap;
+  
    /* Adjust values as needed */
 }
 

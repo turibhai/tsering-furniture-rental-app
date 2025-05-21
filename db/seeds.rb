@@ -5,7 +5,8 @@ Rental.destroy_all
 Furniture.destroy_all
 User.destroy_all
 
-User.create!(email: "furniture@gmail.com", password: "123456")
+User.create!(email: "furnitureuser@gmail.com", password: "123456")
+User.create!(email: "furnitureowner@gmail.com", password: "123456")
 User.create!(email: "furniture2@gmail.com", password: "123456")
 User.create!(email: "furniture3@gmail.com", password: "123456")
 User.create!(email: "furniture4@gmail.com", password: "123456")

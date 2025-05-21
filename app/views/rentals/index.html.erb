@@ -2,25 +2,25 @@
 <h1 class= "text-center my-4">Rental Page</h1>
 <div class="container d-flex-column justify-content-center align-item-center">
   <% @rentals.each do |rental| %>
-    <div class="card-trip mb-4" style="width:340px">
-      <%= image_tag cl_image_path(rental.furniture.photo.key, width: 500, height: 400, crop: :fill), alt: "" %>
+    <div class="card-trip mb-4 p-3 rounded" style="width:340px">
+      <%= image_tag cl_image_path(rental.furniture.photo.key, width: 500, height: 400, crop: :fill), class:"rounded", alt: "" %>
       <div class="card-trip-infos">
-        <div>
-          <h2><%= rental.furniture.name %></h2>
+        <div class="d-flex flex-column align-items-start" style="height: 100%;">
+          <h2 class="d-flex flex-column justify-content-start w-100"><%= rental.furniture.name %></h2>
           <strong>
             <p><%= rental.furniture.furniture_type.capitalize %> </p>
           </strong>
+          <p>Starts on: <%= rental.start_date.strftime("%B %d, %Y") %> </p>
+          <p>Ends on: <%= rental.end_date.strftime("%B %d, %Y") %> </p>
+          <p>Rental Duration: <%= (rental.end_date - rental.start_date).to_i %> days</p>
         </div>
-        <div class="parent-container justify-content-end align-items-start">
+        <div class="parent-container d-flex flex-column justify-content-end align-self-start">
           <strong>
-            <h2><%= rental.status.capitalize %> </h2>
+            <h2 class="btn btn-warning btn-sm rounded align-self-start"><%= rental.status.capitalize %> </h2>
           </strong>
-          <h2 class="card-trip-pricing">¥<%= rental.furniture.price %></h2>
+          <h2 class="card-trip-pricing mt-3 text-end mb-auto">¥<%= number_with_delimiter(rental.furniture.price * (rental.end_date - rental.start_date).to_i) %></h2>
         </div>
-        <%# <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" /> %>
       </div>
     </div>
   <% end %>
 </div>
-<%#= image_tag cl_image_path(@furniture.photo.key, width: 500, height: 400, crop: :fill), alt: "", class: "img-fluid w-100 h-100 object-fit-cover" %>
-<%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>

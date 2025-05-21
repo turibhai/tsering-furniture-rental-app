@@ -41,7 +41,7 @@ url = "https://furniture-api.fly.dev/v1/products?limit=100"
       user: User.all.sample
     )
 
-    file = URI.parse(furniture_hash['image_path']).open   
+    file = URI.parse(furniture_hash['image_path']).open
     furniture.photo.attach(io: file, filename: "img.jpg", content_type: "image/jpg")
     p furniture.save
     p furniture.errors.full_messages

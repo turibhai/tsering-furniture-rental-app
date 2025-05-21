@@ -3,7 +3,11 @@ class FurnituresController < ApplicationController
 skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     page = params[:page] || 1
-    @furnitures = Furniture.page(page)
+    if (params[:category].present?)
+      @furnitures = Furniture.where(furniture_type: params[:category]).page(page)
+    else
+      @furnitures = Furniture.page(page)
+    end
   end
 
   def show

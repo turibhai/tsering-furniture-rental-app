@@ -3,12 +3,17 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width:420px;
   margin: 0 auto;
+  position: relative;
+  
 }
 
 .card-trip > img {
-  height: 200px;
+height: auto;
+  max-height: 300px;
   width: 100%;
   object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
 
 .card-trip h2 {

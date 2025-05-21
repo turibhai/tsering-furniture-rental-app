@@ -1,0 +1,18 @@
+.category-list {
+
+overflow-x: scroll;
+display: flex;
+gap: 24px;
+
+a {
+    display: iline-block;
+    text-decoration: none; 
+    color: inherit;
+}
+
+.btn {
+  padding: 0px 0px;
+   /* Adjust values as needed */
+}
+
+}

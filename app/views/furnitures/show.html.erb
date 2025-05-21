@@ -6,11 +6,16 @@
       <div class="col-md-5">
         <%= image_tag cl_image_path(@furniture.photo.key, width: 500, height: 400, crop: :fill), alt: "", class: "img-fluid w-100 h-100 object-fit-cover" %>
       </div>
-      <!-- Furniture Details -->
-      <div class="col-md-7 p-4">
+      <!-- furniture part -->
+      <div class="col-md-7 p-4"
+     data-controller="range-tracker"
+     data-range-tracker-price-value="<%= @furniture.price %>">
         <h3 class="card-title mb-3"><%= @furniture.name %></h3>
         <p class="mb-1"><strong>Type:</strong> <%= @furniture.furniture_type %></p>
-        <p class="mb-1"><strong>Price:</strong> ¥<%= number_with_delimiter(@furniture.price) %></p>
+        <p class="mb-1">
+          <strong>Total Price:</strong>
+          ¥<span data-range-tracker-target="counter"><%= number_with_delimiter(@furniture.price) %></span>
+        </p>
         <!-- Schedule Rental Form -->
         <div class="mt-4">
           <%= render 'rentals/form', rental: @rental, furniture: @furniture %>

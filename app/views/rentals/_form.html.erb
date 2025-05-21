@@ -1,7 +1,13 @@
 <!-- Rental Form -->
 <div class="container text-start">
   <%= simple_form_for [furniture, rental] do |f| %>
-    <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-    <%= f.submit "Rent",  class: 'btn btn-success mt-3 w-100' %>
+    <%= f.input :start_date, as: :string, input_html: {
+    class: "form-control",
+    data: {
+      action: "change->range-tracker#updatePrice",
+      range_tracker_target: "input"
+    }
+  } %>
+    <%= f.submit "Rent", class: 'btn btn-success mt-3 w-100' %>
   <% end %>
 </div>

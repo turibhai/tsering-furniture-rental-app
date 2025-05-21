@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :rentals
   has_many :furnitures
+  has_one_attached :photo
 end

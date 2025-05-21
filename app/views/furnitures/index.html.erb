@@ -5,14 +5,29 @@
   </div>
 </div>
 <div class="container">
-  <div class="d-flex justify-content-between align-items-center">
+  <div class="d-flex justify-content-between align-items-center m-3">
     <h1>Furnitures</h1>
   </div>
-  <div class="cards">
+  <div class="category-list">
+    <a class="btn btn-success btn-sm" href="/furnitures?category=mirror">Mirrors</a>
+    <a class="btn btn-success" href="/furnitures?category=garden">Gardens</a>
+    <a class="btn btn-success" href="/furnitures?category=chair">Chairs</a>
+    <a class="btn btn-success" href="/furnitures?category=table">Tables</a>
+    <a class="btn btn-success" href="/furnitures?category=desk">Desks</a>
+    <a class="btn btn-success" href="/furnitures?category=sofa">Sofas</a>
+    <a class="btn btn-success" href="/furnitures?category=lamp">Lamps</a>
+    <a class="btn btn-success" href="/furnitures?category=matress">Matresses</a>
+    <a class="btn btn-success" href="/furnitures?category=tv table">Tv tables</a>
+    <a class="btn btn-success" href="/furnitures?category=wardrove">Wardroves</a>
+  </div>
+  <div class="cards mt-4">
     <% @furnitures.each do |furniture| %>
-      <div class="card-category card-furniture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=cl_image_path("#{furniture.photo.key}", width: 280, height: 250, crop: :fill)%>)">
-        <p><%= furniture.name %></p>
-        <p>$<%= furniture.price %></p>
+      <div class="card-trip mb-4" style="width:340px">
+        <%=image_tag cl_image_path("#{furniture.photo.key}", width: 280, height: 250,  crop: :fill), alt: ""%>
+        <div class="card-trip-infos">
+          <div><%= furniture.name %></div>
+          <div>$<%= furniture.price %></div>
+        </div>
         <%= link_to '', furniture_path(furniture), class:"card-link" %>
       </div>
     <% end %>

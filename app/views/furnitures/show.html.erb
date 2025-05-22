@@ -11,7 +11,7 @@
      data-controller="range-tracker"
      data-range-tracker-price-value="<%= @furniture.price %>">
           <h3 class="card-title mb-3"><%= @furniture.name %></h3>
-          <h3 class="mb-1"><strong>Type:</strong> <%= @furniture.furniture_type %></h3>
+          <h3 class="mb-1"><strong>Type:</strong> <%= @furniture.furniture_type.capitalize %></h3>
           <!-- read more part -->
           <div class="d-flex align-items-center justify-content-between">
             <h1 class="mb-1 me-4" style="flex: 1;">

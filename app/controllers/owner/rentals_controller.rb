@@ -1,7 +1,8 @@
 class Owner::RentalsController < ApplicationController
   def index
-    # @rentals = Rental.where(user: current_user)
-    @rentals = current_user.furnitures.map(&:rentals).flatten
+    @rentals_as_owner = current_user.rentals_as_owner
+    # @rentals = current_user.furnitures.map(&:rentals).flatten
+    # @rental = Rental.find
   end
 
   def update

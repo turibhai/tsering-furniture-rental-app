@@ -6,3 +6,7 @@ class Rental < ApplicationRecord
   has_one_attached :photo
   enum status: { pending: 0, approved: 1, rejected: 2, cancelled: 3 }
 end
+
+# def pending?
+#   status == 'pending'
+# end

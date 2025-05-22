@@ -1,0 +1,34 @@
+<div class="container d-flex-column justify-content-center align-item-center">
+  <% rentals.each do |rental| %>
+    <div class="card-trip mb-4 p-3 rounded" style="width:340px">
+      <%= image_tag cl_image_path(rental.furniture.photo.key, width: 500, height: 400, crop: :fill), class:"rounded", alt: "" %>
+      <div class="card-trip-infos">
+        <div class="d-flex flex-column align-items-start" style="height: 100%;">
+          <h2 class="d-flex flex-column justify-content-start w-100"><%= rental.furniture.name %></h2>
+          <strong>
+            <p><%= rental.furniture.furniture_type.capitalize %> </p>
+          </strong>
+          <p>Starts on: <%= rental.start_date.strftime("%B %d, %Y") %> </p>
+          <p>Ends on: <%= rental.end_date.strftime("%B %d, %Y") %> </p>
+          <p>Rental Duration: <%= (rental.end_date - rental.start_date).to_i %> days</p>
+          <div class="rental-actions">
+            <% if rental.pending? %>
+              <div class="flex">
+                <%= simple_form_for rental do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: 'approved'} %>
+                  <%= f.submit 'Approve', class: 'btn btn-info' %>
+                <% end %>
+                <%= simple_form_for rental do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
+                  <%= f.submit 'Reject', class: 'btn btn-light' %>
+                <% end %>
+              </div>
+            <% else %>
+              <%= rental.status %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

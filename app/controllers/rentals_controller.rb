@@ -1,6 +1,6 @@
 class RentalsController < ApplicationController
   def index
-    @rentals = Rental.where(user: current_user)
+    @rentals = current_user.rentals
   end
 
   def create
@@ -18,6 +18,16 @@ class RentalsController < ApplicationController
       render 'furnitures/show', status: :unprocessable_entity
     end
   end
+
+  def update
+    @rental = Rental.find(params[:id])
+    if @rental.update(rental_params)
+      redirect_to owner_rentals_path, notice: "Successfuly updated status"
+    else
+      render 'owner_rentals', status: :unprocessable_entity
+    end
+  end
+
 
   private
 

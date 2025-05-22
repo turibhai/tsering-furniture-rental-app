@@ -1,25 +1,18 @@
 <h1 class="text-center my-4">My Rentals</h1>
-<div class="container d-flex-column justify-content-center align-item-center">
-  <% @rentals.each do |rental| %>
-    <div class="card-trip mb-4 p-3 rounded" style="width:340px">
-      <%= image_tag cl_image_path(rental.furniture.photo.key, width: 500, height: 400, crop: :fill), class:"rounded", alt: "" %>
-      <div class="card-trip-infos">
-        <div class="d-flex flex-column align-items-start" style="height: 100%;">
-          <h2 class="d-flex flex-column justify-content-start w-100"><%= rental.furniture.name %></h2>
-          <strong>
-            <p><%= rental.furniture.furniture_type.capitalize %> </p>
-          </strong>
-          <p>Starts on: <%= rental.start_date.strftime("%B %d, %Y") %> </p>
-          <p>Ends on: <%= rental.end_date.strftime("%B %d, %Y") %> </p>
-          <p>Rental Duration: <%= (rental.end_date - rental.start_date).to_i %> days</p>
-        </div>
-        <div class="parent-container d-flex flex-column justify-content-end align-self-start">
-          <strong>
-            <h2 class="btn btn-warning btn-sm rounded align-self-start"><%= rental.status.capitalize %> </h2>
-          </strong>
-          <h2 class="card-trip-pricing mt-3 text-end mb-auto">¥<%= number_with_delimiter(rental.furniture.price * (rental.end_date - rental.start_date).to_i) %></h2>
-        </div>
-      </div>
-    </div>
-  <% end %>
+<nav class=" navbar justify-content-center">
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active text-black hover-bg" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">All</button>
+    <button class="nav-link text-black hover-bg" id="nav-pending-tab" data-bs-toggle="tab" data-bs-target="#nav-pending" type="button" role="tab" aria-controls="nav-pending" aria-selected="false">Pending</button>
+    <button class="nav-link text-black hover-bg" id="nav-approved-tab" data-bs-toggle="tab" data-bs-target="#nav-approved" type="button" role="tab" aria-controls="nav-approved" aria-selected="false">Approved</button>
+    <button class="nav-link text-black hover-bg" id="nav-rejected-tab" data-bs-toggle="tab" data-bs-target="#nav-rejected" type="button" role="tab" aria-controls="nav-rejected" aria-selected="false">Rejected</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0"> <%= render 'rentals/tab', rentals: @rentals_as_owner %>
+  </div>
+  <div class="tab-pane fade" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab" tabindex="0"><%= render 'rentals/tab', rentals: @rentals_as_owner.select { |r| r.pending? } %>
+  </div>
+  <div class="tab-pane fade" id="nav-approved" role="tabpanel" aria-labelledby="nav-approved-tab" tabindex="0"><%= render 'rentals/tab', rentals: @rentals_as_owner.select { |r| r.approved? } %></div>
+  <div class="tab-pane fade" id="nav-rejected" role="tabpanel" aria-labelledby="nav-rejected-tab" tabindex="0"><%= render 'rentals/tab', rentals: @rentals_as_owner.select { |r| r.rejected? } %></div>
+</div>
 </div>

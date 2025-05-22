@@ -63,3 +63,8 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+.hover-bg:hover {
+  background-color: #1cdd87; /* Light gray */
+  transition: background-color 0.3s ease;
+}

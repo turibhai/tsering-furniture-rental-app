@@ -11,13 +11,28 @@
   width: 40px;
 }
 
-#navbarSupportedContent {
-  position: absolute;
-  bottom: 100%;
-  width: 100%;
-  background-color: #333;
+.search-form {
+  margin-left: auto;
+  position: relative;
 }
 
-.dropdown-toggle::after {
-  display:none;
+.fa-solid {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  font-size: 16px;
+  color: rgb(152, 155, 155);
+  transform: translateY(-7px);
 }
+
+
+
+
+.search-form input {
+  text-align: center;
+  border-radius: 16px;
+  background-color: #f9f9f9;
+  width: 100%
+
+}
+

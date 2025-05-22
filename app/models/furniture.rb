@@ -9,4 +9,10 @@ class Furniture < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   paginates_per 10
+  include PgSearch::Model
+  pg_search_scope :search,
+    against: [ :name, :furniture_type, :description ],
+    using: {
+      tsearch: { prefix: true }
+  }
 end

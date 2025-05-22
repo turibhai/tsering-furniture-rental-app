@@ -3,8 +3,10 @@ class FurnituresController < ApplicationController
 skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     page = params[:page] || 1
-    if (params[:category].present?)
-      @furnitures = Furniture.where(furniture_type: params[:category]).page(page)
+    if params[:q].present?
+      @furnitures = Furniture.search(params[:q]).page(page)
+    elsif (params[:category].present?)
+      @furnitures = Furniture.where(furniture_type: params[:category]).page(page) if params[:category].present?
     else
       @furnitures = Furniture.page(page)
     end

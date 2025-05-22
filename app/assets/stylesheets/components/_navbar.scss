@@ -12,14 +12,17 @@
 }
 
 .search-form {
-  width: 800px;
-  
+
+  display: flex;
+  flex-grow: 1;
 }
+
 
 .search-form input {
   text-align: center;
   border-radius: 16px;
   background-color: #f9f9f9;
-  width: 100%;
+  width: 912px
 
 }
+

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # root to: "furnitures#index"
   resources :furnitures, only: [ :index, :show, :create, :update, :destroy ] do
     resources :rentals, only: [:create]
+    resources :reviews, only: [:create, :show, :destroy]
   end
 
   resources :rentals, only: [:index, :update]

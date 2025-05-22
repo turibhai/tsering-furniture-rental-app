@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('banner.webp') %>);">
   <div class="container ">
-    <h1><strong>Welcome to Rent furnitures app</strong> </h1>
-    <p><strong>Rent furnitures</strong>!</p>
+    <h1><strong>Welcome to HOMIE</strong> </h1>
+    <p><strong>Furniture rental app</strong>!</p>
   </div>
 </div>
 <div class="container custom-container-bottom">
@@ -18,7 +18,7 @@
   </div>
   <div class="cards mt-4">
     <% @furnitures.each do |furniture| %>
-      <div class="card-trip mb-4" style="width:340px">
+      <div class="card-trip">
         <%=image_tag cl_image_path("#{furniture.photo.key}", width: 280, height: 250,  crop: :fill), alt: ""%>
         <div class="card-trip-infos">
           <div><%= furniture.name %></div>

@@ -5,26 +5,15 @@
       <%= image_tag "logo2.jpg", class: "me-2", height: 30 %>
       <span>Homie</span>
     <% end %>
-    <!-- Right-side User Avatar and Menu -->
-    <ul class="navbar-nav ms-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <a href="#" class="nav-link d-flex align-items-center" id="navbarDropdown" role="button" aria-expanded="false">
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :fill, class: "rounded-circle", alt: "User avatar" %>
-            <% else %>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", width: 40, height: 40, class: "rounded-circle", alt: "Default avatar" %>
-            <% end %>
-          </a>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-        </li>
+    <div class="search-form ">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <%= form_with url: furnitures_path, method: :get do %>
+        <%= text_field_tag :q,
+            params[:q],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>

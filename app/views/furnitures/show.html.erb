@@ -45,6 +45,21 @@
           <%= render 'rentals/form', rental: @rental, furniture: @furniture %>
         </div>
       </div>
+      <!-- owners information -->
+      <div class="card-product">
+        <img src="<%= cl_image_path(@furniture.user.photo.key) %>" />
+        <div class="card-product-infos">
+          <div>
+            <h2><%= @furniture.user.name %></h2>
+            <p><strong>Verified Seller</strong></p>
+          </div>
+          <div>
+            <% rand(1..5).times do %>
+              <i class="fas fa-star text-info"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class ='mt-4'>
         <%= render 'reviews/form', review: @review, furniture: @furniture %>
       </div>

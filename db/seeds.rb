@@ -16,6 +16,7 @@ User.create!(email: "furniture4@gmail.com", password: "123456")
 puts " creating user photos"
 50.times do
   user = User.new(
+  name: Faker::Name.name,
   email: Faker::Internet.email,
   password: '123456', # needs to be 6 digits,
   # add any additional attributes you have on your model
@@ -44,23 +45,22 @@ response = JSON.parse(URI.open(url).read)
 #  categories = response["data"].map {|furniture_hash| furniture_hash["category"]}.uniq
 #  p categories
 
-response['data'].each do |furniture_hash|
-  puts "...creating the furniture #{furniture_hash['name']}..."
-  # create an instance with the hash
-  furniture = Furniture.new(
-    description: furniture_hash['description'],
-    name: furniture_hash['name'],
-    price: furniture_hash['price'],
-    furniture_type: furniture_hash['category'],
-    user: User.all.sample
-  )
+ response['data'].each do |furniture_hash|
+    puts "...creating the furniture #{furniture_hash['name']}..."
+    # create an instance with the hash
+    furniture = Furniture.new(
+      description: furniture_hash['description'],
+      name: furniture_hash['name'],
+      price: rand(10..50),
+      furniture_type: furniture_hash['category'],
+      user: User.all.sample
+    )
 
-  file = URI.parse(furniture_hash['image_path']).open
-  furniture.photo.attach(io: file, filename: "img.jpg", content_type: "image/jpg")
-  p furniture.save
-  p furniture.errors.full_messages
-
-  puts "... created #{Furniture.count} furnitures."
+    file = URI.parse(furniture_hash['image_path']).open
+    furniture.photo.attach(io: file, filename: "img.jpg", content_type: "image/jpg")
+    p furniture.save
+    p furniture.errors.full_messages
+  end
+puts "... created #{Furniture.count} furnitures."
 end
-
 puts 'Finished!'

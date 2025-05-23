@@ -7,17 +7,18 @@ Furniture.destroy_all
 User.destroy_all
 Review.destroy_all
 
-User.create!(email: "furnitureuser@gmail.com", password: "123456")
-User.create!(email: "furnitureowner@gmail.com", password: "123456")
-User.create!(email: "furniture2@gmail.com", password: "123456")
-User.create!(email: "furniture3@gmail.com", password: "123456")
-User.create!(email: "furniture4@gmail.com", password: "123456")
+users = [
+{email: "original@gmail.com"},
+{email: "owen@gmail.com"},
+{email: "hayao@gmail.com"},
+{email: "tsering@gmail.com"},
+]
 
 puts " creating user photos"
-50.times do
+users.each do |custom_user|
   user = User.new(
   name: Faker::Name.name,
-  email: Faker::Internet.email,
+  email: custom_user[:email],
   password: '123456', # needs to be 6 digits,
   # add any additional attributes you have on your model
 )
@@ -37,7 +38,7 @@ puts " creating user photos"
   user.save
 end
 
-puts "created 50 photos"
+puts "created 5 user"
 
 url = "https://furniture-api.fly.dev/v1/products?limit=100"
 response = JSON.parse(URI.open(url).read)
@@ -52,9 +53,10 @@ response = JSON.parse(URI.open(url).read)
       description: furniture_hash['description'],
       name: furniture_hash['name'],
       price: rand(10..50),
-      furniture_type: furniture_hash['category'],
+      furniture_type: furniture_hash['category'].capitalize,
       user: User.all.sample
     )
+
 
     file = URI.parse(furniture_hash['image_path']).open
     furniture.photo.attach(io: file, filename: "img.jpg", content_type: "image/jpg")
@@ -62,5 +64,4 @@ response = JSON.parse(URI.open(url).read)
     p furniture.errors.full_messages
   end
 puts "... created #{Furniture.count} furnitures."
-end
 puts 'Finished!'

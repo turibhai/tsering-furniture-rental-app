@@ -39,7 +39,7 @@ class FurnituresController < ApplicationController
     if @furniture.save
       redirect_to owner_rentals_path, notice: "Furniture created!"
     else
-      render :new, status: :unprocessable_entity
+      render 'edit', status: :unprocessable_entity
     end
   end
 

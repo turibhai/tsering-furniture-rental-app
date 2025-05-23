@@ -79,3 +79,4 @@ gem 'faker'
 gem 'cloudinary', '~> 1.16.0'
 gem 'kaminari'
 gem "pg_search"
+gem "nokogiri"

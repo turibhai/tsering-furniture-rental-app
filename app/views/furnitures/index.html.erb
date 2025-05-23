@@ -19,7 +19,7 @@
   <div class="cards mt-4">
     <% @furnitures.each do |furniture| %>
       <div class="card-trip">
-        <%=image_tag cl_image_path("#{furniture.photo.key}", width: 280, height: 250,  crop: :fill), alt: ""%>
+        <%=image_tag cl_image_path("#{furniture.photo.key}", width: 280, height: 250,  crop: :fill), alt: "" %>
         <div class="card-trip-infos">
           <div><%= furniture.name %></div>
           <div>¥<%= furniture.price %></div>

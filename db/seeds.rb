@@ -5,6 +5,7 @@ puts "The furtniture seeds have started"
 Rental.destroy_all
 Furniture.destroy_all
 User.destroy_all
+Review.destroy_all
 
 User.create!(email: "furnitureuser@gmail.com", password: "123456")
 User.create!(email: "furnitureowner@gmail.com", password: "123456")
@@ -38,25 +39,28 @@ end
 puts "created 50 photos"
 
 url = "https://furniture-api.fly.dev/v1/products?limit=100"
- response = JSON.parse(URI.open(url).read)
+response = JSON.parse(URI.open(url).read)
 
 #  categories = response["data"].map {|furniture_hash| furniture_hash["category"]}.uniq
 #  p categories
 
- response['data'].each do |furniture_hash|
-    puts "...creating the furniture #{furniture_hash['name']}..."
-    # create an instance with the hash
-    furniture = Furniture.new(
-      description: furniture_hash['description'],
-      name: furniture_hash['name'],
-      price: furniture_hash['price'],
-      furniture_type: furniture_hash['category'],
-      user: User.all.sample
-    )
+response['data'].each do |furniture_hash|
+  puts "...creating the furniture #{furniture_hash['name']}..."
+  # create an instance with the hash
+  furniture = Furniture.new(
+    description: furniture_hash['description'],
+    name: furniture_hash['name'],
+    price: furniture_hash['price'],
+    furniture_type: furniture_hash['category'],
+    user: User.all.sample
+  )
 
-    file = URI.parse(furniture_hash['image_path']).open
-    furniture.photo.attach(io: file, filename: "img.jpg", content_type: "image/jpg")
-    p furniture.save
-    p furniture.errors.full_messages
-  end
-puts "... created #{Furniture.count} furnitures."
+  file = URI.parse(furniture_hash['image_path']).open
+  furniture.photo.attach(io: file, filename: "img.jpg", content_type: "image/jpg")
+  p furniture.save
+  p furniture.errors.full_messages
+
+  puts "... created #{Furniture.count} furnitures."
+end
+
+puts 'Finished!'

@@ -5,6 +5,7 @@ puts "The furtniture seeds have started"
 Rental.destroy_all
 Furniture.destroy_all
 User.destroy_all
+Review.destroy_all
 
 User.create!(email: "furnitureuser@gmail.com", password: "123456")
 User.create!(email: "furnitureowner@gmail.com", password: "123456")
@@ -39,7 +40,7 @@ end
 puts "created 50 photos"
 
 url = "https://furniture-api.fly.dev/v1/products?limit=100"
- response = JSON.parse(URI.open(url).read)
+response = JSON.parse(URI.open(url).read)
 
 #  categories = response["data"].map {|furniture_hash| furniture_hash["category"]}.uniq
 #  p categories
@@ -61,3 +62,5 @@ url = "https://furniture-api.fly.dev/v1/products?limit=100"
     p furniture.errors.full_messages
   end
 puts "... created #{Furniture.count} furnitures."
+end
+puts 'Finished!'

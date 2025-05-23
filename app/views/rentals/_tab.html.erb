@@ -1,34 +1,47 @@
-<div class="container d-flex-column justify-content-center align-item-center">
-  <% rentals.each do |rental| %>
-    <div class="card-trip mb-4 p-3 rounded" style="width:340px">
-      <%= image_tag cl_image_path(rental.furniture.photo.key, width: 500, height: 400, crop: :fill), class:"rounded", alt: "" %>
-      <div class="card-trip-infos">
-        <div class="d-flex flex-column align-items-start" style="height: 100%;">
-          <h2 class="d-flex flex-column justify-content-start w-100"><%= rental.furniture.name %></h2>
-          <strong>
-            <p><%= rental.furniture.furniture_type.capitalize %> </p>
-          </strong>
-          <p>Starts on: <%= rental.start_date.strftime("%B %d, %Y") %> </p>
-          <p>Ends on: <%= rental.end_date.strftime("%B %d, %Y") %> </p>
-          <p>Rental Duration: <%= (rental.end_date - rental.start_date).to_i %> days</p>
-          <div class="rental-actions">
-            <% if rental.pending? %>
-              <div class="flex">
-                <%= simple_form_for rental do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'approved'} %>
-                  <%= f.submit 'Approve', class: 'btn btn-info' %>
-                <% end %>
-                <%= simple_form_for rental do |f| %>
-                  <%= f.input :status, as: :hidden, input_html: { value: 'rejected'} %>
-                  <%= f.submit 'Reject', class: 'btn btn-light' %>
+<!-- Added container to prevent content from shifting left-right and align cards within viewport -->
+<div class="container mb-5">
+  <!-- use col-md-4 with col-auto and added justify-content-center to center cards horizontally -->
+  <div class="row justify-content-center">
+    <% rentals.each do |rental| %>
+      <!-- col-auto allows the card to shrink to fit its content (340px card) -->
+      <div class="col-auto mb-4">
+        <!-- Removed style="width:340px", added class mx-auto for horizontal centering -->
+        <div class="card-trip p-3 rounded mx-auto">
+          <!-- Added w-100 to make the image responsive inside the fixed-width card -->
+          <%= image_tag cl_image_path(rental.furniture.photo.key, width: 500, height: 400, crop: :fill), class:"rounded w-100 mb-2", alt: "" %>
+          <div class="card-trip-infos">
+            <!-- align-items-start ensures left-aligned text inside the card -->
+            <div class="d-flex flex-column align-items-start" style="height: 100%;">
+              <!-- Added w-100 to make heading take full card width -->
+              <h3 class="w-100"><%= rental.furniture.name %></h3>
+              <strong>
+                <h4><%= rental.furniture.furniture_type.capitalize %></h4>
+              </strong>
+              <p>Owner: <%= rental.furniture.user.email.split('@').first %></p>
+              <p>Starts on: <%= rental.start_date.strftime("%B %d, %Y") %></p>
+              <p>Ends on: <%= rental.end_date.strftime("%B %d, %Y") %></p>
+              <p>Rental Duration: <%= (rental.end_date - rental.start_date).to_i %> days</p>
+              <div class="rental-actions">
+                <% if rental.pending? %>
+                  <!-- Changed flex to d-flex with gap-2 for spacing between buttons -->
+                  <div class="d-flex gap-2">
+                    <%= simple_form_for rental do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'approved' } %>
+                      <%= f.submit 'Approve', class: 'btn btn-info' %>
+                    <% end %>
+                    <%= simple_form_for rental do |f| %>
+                      <%= f.input :status, as: :hidden, input_html: { value: 'rejected' } %>
+                      <%= f.submit 'Reject', class: 'btn btn-light' %>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <p>Status: <%= rental.status.capitalize %></p>
                 <% end %>
               </div>
-            <% else %>
-              <%= rental.status %>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

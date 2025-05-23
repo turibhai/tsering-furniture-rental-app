@@ -2,7 +2,9 @@ class Owner::RentalsController < ApplicationController
   def index
     @rentals_as_owner = current_user.rentals_as_owner
     # @rentals = current_user.furnitures.map(&:rentals).flatten
-    # @rental = Rental.find
+    @rental = Rental.new
+    @furniture = Furniture.new
+    @furnitures = current_user.furnitures
   end
 
   def update

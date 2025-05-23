@@ -7,11 +7,11 @@ Furniture.destroy_all
 User.destroy_all
 Review.destroy_all
 
-User.create!(email: "furnitureuser@gmail.com", password: "123456")
-User.create!(email: "furnitureowner@gmail.com", password: "123456")
-User.create!(email: "furniture2@gmail.com", password: "123456")
-User.create!(email: "furniture3@gmail.com", password: "123456")
-User.create!(email: "furniture4@gmail.com", password: "123456")
+User.create!(email: "furnitureuser@gmail.com", password: "123456",  name: Faker::Name.name)
+User.create!(email: "furnitureowner@gmail.com", password: "123456",  name: Faker::Name.name)
+User.create!(email: "furniture2@gmail.com", password: "123456",  name: Faker::Name.name)
+User.create!(email: "furniture3@gmail.com", password: "123456",  name: Faker::Name.name)
+User.create!(email: "furniture4@gmail.com", password: "123456",  name: Faker::Name.name)
 
 puts " creating user photos"
 50.times do

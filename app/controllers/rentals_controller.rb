@@ -1,6 +1,7 @@
 class RentalsController < ApplicationController
   def index
     @rentals = current_user.rentals
+    # @rentals_as_owner = Rental.for_owner(current_user)
   end
 
   def create

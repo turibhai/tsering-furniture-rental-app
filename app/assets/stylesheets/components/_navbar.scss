@@ -16,7 +16,7 @@
   position: relative;
 }
 
-.fa-solid {
+.fa-solid:not(.fa-plus) {
   position: absolute;
   top: 50%;
   left: 8px;
@@ -35,4 +35,3 @@
   width: 100%
 
 }
-

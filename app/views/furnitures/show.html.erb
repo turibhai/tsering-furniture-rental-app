@@ -47,7 +47,7 @@
       </div>
       <!-- owners information -->
       <div class="card-product">
-        <%= @furniture.user.photo.attached? ? cl_image_path(@furniture.user.photo.key) : (image_tag "bed.jpg", alt: "Le Wagon", width: 200) %>
+        <%= @furniture.user.photo.attached? ? cl_image_tag(@furniture.user.photo.key) : (image_tag "bed.jpg", alt: "Le Wagon", width: 200) %>
         <div class="card-product-infos">
           <div>
             <h2><%= @furniture.user.name %></h2>

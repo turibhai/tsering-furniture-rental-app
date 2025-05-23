@@ -3,34 +3,30 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="review-cards"    var swiper = new Swiper(".mySwiper", {
 
 export default class extends Controller {
-  connect() {
-    this.swiper = new Swiper(".mySwiper", {
-      // slidesPerView: 1,
-      // spaceBetween: 30,
-      // loop: true,
-      // pagination: {
-      //   el: ".swiper-pagination",
-      //   clickable: true,
-      // },
-      // navigation: {
-      //   nextEl: ".swiper-button-next",
-      //   prevEl: ".swiper-button-prev",
-      // },
+  static targets = ["progressCircle", "progressContent"];
 
-      grabCursor: true,
-      cubeEffect: {
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94,
-        effect: "cube",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-      });
-    };
+  connect() {
+    console.log("connected")
+    this.swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      },
+      navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+      },
+
+    });
   }
+}
 
 
 

@@ -14,7 +14,9 @@ skip_before_action :authenticate_user!, only: [:index, :show]
 
   def show
     @furniture = Furniture.find(params[:id])
+    return redirect_to furnitures_path, alert: "Furniture not found" unless @furniture
     @rental = Rental.new
+    @owner = @furniture.user
   end
 
   # def create

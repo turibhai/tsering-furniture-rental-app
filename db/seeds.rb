@@ -15,6 +15,7 @@ User.create!(email: "furniture4@gmail.com", password: "123456")
 puts " creating user photos"
 50.times do
   user = User.new(
+  name: Faker::Name.name,
   email: Faker::Internet.email,
   password: '123456', # needs to be 6 digits,
   # add any additional attributes you have on your model
@@ -49,7 +50,7 @@ url = "https://furniture-api.fly.dev/v1/products?limit=100"
     furniture = Furniture.new(
       description: furniture_hash['description'],
       name: furniture_hash['name'],
-      price: furniture_hash['price'],
+      price: rand(10..50),
       furniture_type: furniture_hash['category'],
       user: User.all.sample
     )

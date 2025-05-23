@@ -1,15 +1,12 @@
 <%# Reviews Form %>
-<div class="container">
-  <div class="card">
-    <h2></h2>
-    <p></p>
-  </div>
-  <div id='reviews'>
-    <div class="review-card-container">
-      <div class="depth">
-        <% if furniture.reviews.any? %>
+<div id='reviews'>
+  <%# Review Card Info %>
+  <div class="review-card-infos">
+    <% if furniture.reviews.any? %>
+      <div class="swiper mySwiper py-4" data-controller="review-cards">
+        <div class="swiper-wrapper">
           <% furniture.reviews.each do |review| %>
-            <div class="review-card">
+            <div class="swiper-slide">
               <strong><%= review.title %></strong>
               <% review.rating.times do %>
                 <i class="fas fa-star text-info"></i>
@@ -21,24 +18,29 @@
               <i><%= "\"#{review.content}\"" %></i>
             </div>
           <% end %>
-        <% end %>
+        </div>
+        <div class="swiper-pagination"></div>
       </div>
-    </div>
-    <div class="reviews-form">
-      <a class="btn btn-success rounded-lg m-3" data-bs-toggle="collapse" href="#collapseReview" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Add a Review
-      </a>
-      <div class="collapse mx-3" id="collapseReview">
-        <%= simple_form_for([@furniture, @furniture.reviews.new]) do |f| %>
-          <%= f.input :title %>
-          <%= f.input :content, as: :text %>
-          <div class="star-rating">
-            <% 5.times do |i| %>
-              <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %> />
-            <% end %>
-          </div>
-          <%= f.button :submit, "Submit Review", class:'btn btn-success m-3' %>
-        <% end %>
-      </div>
+    <% else %>
+      <p class='mx-3'>Be the first to review</p>
+    <% end %>
+  </div>
+  <!--Review Form -->
+  <div class="reviews-form">
+    <a class="btn btn-success rounded-lg m-3" data-bs-toggle="collapse" href="#collapseReview" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Add a Review
+    </a>
+    <div class="collapse mx-3" id="collapseReview">
+      <%= simple_form_for([@furniture, @furniture.reviews.new]) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :content, as: :text %>
+        <div class="star-rating">
+          <% 5.times do |i| %>
+            <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %> />
+          <% end %>
+        </div>
+        <%= f.button :submit, "Submit Review", class:'btn btn-success m-3' %>
+      <% end %>
     </div>
   </div>
+</div>

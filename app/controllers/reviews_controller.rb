@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   def show
     @furniture = Furniture.find(params[:furniture_id])
     @review = @furniture.reviews.new
@@ -13,7 +12,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @furniture, notice: "Saved Review"
     else
-      render :new, status: :unprocessable_entity
+      redirect_to furniture_reviews_path, status: :unprocessable_entity
     end
   end
 

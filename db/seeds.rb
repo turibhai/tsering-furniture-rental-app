@@ -1,4 +1,5 @@
 require "open-uri"
+require 'nokogiri'
 
 puts "The furtniture seeds have started"
 Rental.destroy_all
@@ -11,19 +12,30 @@ User.create!(email: "furniture2@gmail.com", password: "123456")
 User.create!(email: "furniture3@gmail.com", password: "123456")
 User.create!(email: "furniture4@gmail.com", password: "123456")
 
-# User.all.each do |user|
-#   5.times do
-#     Furniture.create!(
-#       name: Faker::Commerce.product_name,
-#       description: Faker::Lorem.sentence,
-#       price: rand(10..50),
-#       furniture_type: Furniture::CATEGORIES.sample,
-#       user: user
-#     )
-#   end
-#   puts "I have seeded 20 furnitures"
-# end
+puts " creating user photos"
+50.times do
+  user = User.new(
+  email: Faker::Internet.email,
+  password: '123456', # needs to be 6 digits,
+  # add any additional attributes you have on your model
+)
+  # gender options: 'all' or 'male' or 'female'
+  gender = 'all'
+  # age options: 'all' or '12-18' or '19-25' or '26-35' or '35-50' or '50+'
+  age = '26-35'
+  # ethnicity options: 'all' or 'asian' or 'white' or 'black' or 'indian' or 'middle_eastern' or 'latino_hispanic'
+  ethnicity = 'all'
 
+  url = "https://this-person-does-not-exist.com/new?gender=#{gender}&age=#{age}&etnic=#{ethnicity}"
+  json = URI.open(url).string
+  src = JSON.parse(json)['src']
+  photo_url = "https://this-person-does-not-exist.com#{src}"
+  file = URI.open(photo_url)
+  user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+  user.save
+end
+
+puts "created 50 photos"
 
 url = "https://furniture-api.fly.dev/v1/products?limit=100"
  response = JSON.parse(URI.open(url).read)

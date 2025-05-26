@@ -2,7 +2,19 @@ class Furniture < ApplicationRecord
   belongs_to :user
   has_many :rentals
   validates :name, presence: true
-  CATEGORIES = ["Lamp", "Garden", "Matress", "Tv Table", "Mirror", "Wardrove"] #added new list of category to pass validity for api
+  CATEGORIES = [
+    "lamp",
+    "garden",
+    "matress",
+    "tv table",
+    "mirror",
+    "wardrove",
+    "stool",
+    "desk",
+    "kitchen",
+    "vanitory",
+    "sofa"
+  ]
   validates :furniture_type, presence: true, inclusion: { in: CATEGORIES }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   has_one_attached :photo

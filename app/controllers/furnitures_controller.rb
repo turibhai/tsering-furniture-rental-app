@@ -18,10 +18,12 @@ class FurnituresController < ApplicationController
   end
 
   def update
+    @furniture = Furniture.find_by(id: params[:id])
     if @furniture.update(furniture_params)
+      @furniture.save
       redirect_to furniture_path(@furniture)
     else
-      render 'edit', status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -32,16 +34,20 @@ class FurnituresController < ApplicationController
     @owner = @furniture.user
   end
 
-  def create
-    @furniture = Furniture.new(furniture_params)
-    @furniture.user = current_user # only if Furniture belongs_to :user
+ def create
+  @furniture = Furniture.new(furniture_params)
+  @furniture.user = current_user
 
-    if @furniture.save
-      redirect_to owner_rentals_path, notice: "Furniture created!"
-    else
-      render 'edit', status: :unprocessable_entity
-    end
+  if @furniture.save
+    redirect_to owner_rentals_path, notice: "Furniture created!"
+  else
+    @rentals_as_owner = current_user.rentals_as_owner
+    @furnitures = current_user.furnitures
+
+    render 'owner/rentals/index', status: :unprocessable_entity
   end
+end
+
 
   private
 

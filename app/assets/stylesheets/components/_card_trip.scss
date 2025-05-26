@@ -2,14 +2,14 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
-  
+
 }
 
 .card-trip > img {
 height: auto;
-  height: 300px;
+  height: 250px;
   width: 100%;
-  object-fit: cover;
+  object-fit: fill;
   display: block;
   margin: 0 auto;
 }
@@ -28,10 +28,10 @@ height: auto;
 
 
 .card-trip .card-trip-infos {
-  padding: 16px;
+  padding: 8px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  // align-items: flex-end;
   position: relative;
 }
 

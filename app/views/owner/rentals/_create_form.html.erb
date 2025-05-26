@@ -1,11 +1,14 @@
 <div class="container rounded-5">
-  <%= simple_form_for @furniture do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :price %>
-    <%= f.input :furniture_type, collection: Furniture::CATEGORIES, as: :check_boxes,  input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item' %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Save", class: "btn btn-success round-3" %>
+  <%= simple_form_for @furniture, html: { multipart: true } do |f| %>
+    <%= f.input :name, label: "Furniture Name" %>
+    <%= f.input :description, as: :text, label: "Description" %>
+    <%= f.input :price, label: "Price (¥)" %>
+    <%= f.input :furniture_type,
+                collection: Furniture::CATEGORIES,
+                prompt: "Select a category",
+                label: "Category",
+                input_html: { class: "form-select" } %>
+    <%= f.input :photo, as: :file, label: "Upload Photo" %>
+    <%= f.submit "Save", class: "btn btn-success rounded-3" %>
   <% end %>
 </div>

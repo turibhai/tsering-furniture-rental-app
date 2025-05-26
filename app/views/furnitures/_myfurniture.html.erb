@@ -1,24 +1,66 @@
-<h1 class="text-center mb-4">User Rental</h1>
-<div class="container mb-5">
-  <div class="row justify-content-center">
+<div class="container mb-5 custom-container-bottom">
+  <div class="row justify-content-center mb-5">
     <% @furnitures.each do |furniture| %>
-      <div class="col-md-4 col-sm-6 col-12 mb-4"> <!-- Responsive grid -->
-        <div class="card-trip mb-4 p-3 rounded w-100"> <!-- Ensures full width on mobile -->
-          <%= image_tag cl_image_path(furniture.photo.key, width: 500, height: 400, crop: :fill), class:"img-fluid rounded", alt: "" %>
-          <div class="card-trip-infos">
-            <div class="d-flex flex-column align-items-start">
+      <div class="col-md-4 col-sm-6 col-12 mb-4 d-flex justify-content-center">
+        <div class="card-trip p-3 rounded-5 w-100" style="max-width: 340px;">
+          <%= image_tag cl_image_path(furniture.photo.key, width: 500, crop: :fill), class:"img-fluid rounded", alt: "" %>
+          <div class="card-trip-infos d-flex flex-column mt-3">
+            <div>
               <h2><%= furniture.name %></h2>
               <strong>
                 <p><%= furniture.furniture_type.capitalize %></p>
+              </strong>
+              <strong>
+                <p>Owner: <%= furniture.user.name.capitalize %></p>
               </strong>
             </div>
             <div class="parent-container d-flex flex-column justify-content-end align-self-start">
               <h2 class="card-trip-pricing mt-3 text-end mb-auto">¥<%= furniture.price %></h2>
             </div>
+            <!-- Edit icon button that triggers modal -->
+            <div class="align-self-end mt-auto">
+              <%= link_to '#', data: { bs_toggle: "modal", bs_target: "#editFurnitureModal-#{furniture.id}" } do %>
+                <i class="fa-solid fa-pen-to-square" style="font-size: 24px; color: #40e29a;"></i>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-      <%= link_to "Edit Furniture", edit_furniture_path(furniture), class: "btn btn-success" %>
+      <!-- Modal for editing furniture -->
+      <div class="modal fade" id="editFurnitureModal-<%= furniture.id %>" tabindex="-1" aria-labelledby="editFurnitureModalLabel-<%= furniture.id %>" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <%= form_with model: furniture, url: furniture_path(furniture), method: :patch, local: true do |f| %>
+              <div class="modal-header">
+                <h5 class="modal-title" id="editFurnitureModalLabel-<%= furniture.id %>">Edit Furniture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class: "form-control" %>
+                </div>
+                <div class="mb-3">
+                  <%= f.label :furniture_type %>
+                  <%= f.select :furniture_type, Furniture::CATEGORIES, {}, class: "form-select" %>
+                </div>
+                <div class="mb-3">
+                  <%= f.label :description %>
+                  <%= f.text_area :description, class: "form-control" %>
+                </div>
+                <div class="mb-3">
+                  <%= f.label :price %>
+                  <%= f.number_field :price, class: "form-control" %>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <%= f.submit "Save Changes", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

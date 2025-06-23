@@ -9,16 +9,17 @@ export default class extends Controller {
   }
   connect() {
     console.log("We connect");
-   flatpickr(this.inputTarget, {
+    flatpickr(this.inputTarget, {
       mode: "range",
-      dateFormat: "Y-m-d"
+      dateFormat: "Y-m-d",
+      minDate: new Date().setHours(0, 0, 0, 0), // set to today at midnight
     })
   }
 
 
   updatePrice(e) {
     const selectedDate = e.currentTarget.value.split(" to ")
-    if(selectedDate.length == 2) {
+    if (selectedDate.length == 2) {
       const startDate = Date.parse(selectedDate[0]) // 2025-05-30
       const endDate = Date.parse(selectedDate[1])
 

@@ -3,6 +3,7 @@
   <%= simple_form_for [furniture, rental] do |f| %>
     <%= f.input :start_date, as: :string, input_html: {
     class: "form-control",
+    placeholder: "Select date",
     data: {
       action: "change->range-tracker#updatePrice",
       range_tracker_target: "input"

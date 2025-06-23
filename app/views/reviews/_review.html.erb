@@ -1,0 +1,33 @@
+<div id='reviews'>
+  <%# Review Card Info %>
+  <div class="review-card-infos" data-controller="review-cards">
+    <% if furniture.reviews.any? %>
+      <div class="swiper mySwiper py-4">
+        <div class="swiper-wrapper">
+          <% furniture.reviews.each do |review| %>
+            <div class="swiper-slide mb-4 .bg-secondary">
+              <strong><%= review.title %></strong>
+              <% review.rating.times do %>
+                <i class="fas fa-star text-info"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+              <br>
+              <i><%= "\"#{review.content}\"" %></i>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="autoplay-progress">
+        <svg viewBox="0 0 48 48" data-review-cards-target="progressCircle">
+          <circle cx="24" cy="24" r="20"></circle>
+        </svg>
+        <span data-review-cards-target="progressContent"></span>
+      </div>
+    </div>
+  <% else %>
+    <p class='mx-3'>Be the first to review</p>
+  <% end %>
+</div>

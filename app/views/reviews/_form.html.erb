@@ -1,19 +1,10 @@
-<%# Reviews Form %>
-<!--Review Form -->
-<div class="reviews-form">
-  <a class="btn btn-success rounded-lg m-3" data-bs-toggle="collapse" href="#collapseReview" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Add a Review
-  </a>
-  <div class="collapse mx-3" id="collapseReview">
-    <%= simple_form_for([@furniture, @furniture.reviews.new]) do |f| %>
-      <%= f.input :title %>
-      <%= f.input :content, as: :text %>
-      <div class="star-rating">
-        <% 5.times do |i| %>
-          <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %> />
-        <% end %>
-      </div>
-      <%= f.button :submit, "Submit Review", class:'btn btn-success m-3' %>
+ <%= simple_form_for([@furniture, @furniture.reviews.new]) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content, as: :text %>
+  <div class="star-rating">
+    <% 5.times do |i| %>
+      <input type="radio" name="review[rating]" value="<%= i + 1 %>" <%= "checked" if i == 2 %> />
     <% end %>
   </div>
-</div>
+  <%= f.button :submit, "Submit Review", class:'btn btn-success m-3' %>
+<% end %>

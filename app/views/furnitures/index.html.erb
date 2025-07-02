@@ -9,17 +9,23 @@
     <h1>Furnitures</h1>
   </div>
   <div class="category-list mx-auto p-2">
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=mirror">Mirrors</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=garden">Gardens</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=lamp">Lamps</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=matress">Matresses</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=tv table">Tv-stand</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=wardrove">Wardrobes</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=stool">Stool</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=desk">Desk</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=kitchen">Kitchen</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=vanitory">Vanitory</a>
-    <a class="btn btn-light rounded-pill border-1 border-dark-subtle " href="/furnitures?category=sofa">Sofa</a>
+    <% categories = [
+    {name: "Mirrors", param: "mirror"},
+    {name: "Gardens", param: "garden"},
+    {name: "Lamps", param: "lamp"},
+    {name: "Matresses", param: "matress"},
+    {name: "Tv-stand", param: "tv table"},
+    {name: "Wardrobes", param: "wardrove"},
+    {name: "Stool", param: "stool"},
+    {name: "Desk", param: "desk"},
+    {name: "Kitchen", param: "kitchen"},
+    {name: "Vanitory", param: "vanitory"},
+    {name: "Sofa", param: "sofa"}
+  ] %>
+    <% categories.each do |cat| %>
+      <a class="btn btn-light rounded-pill border-1 border-dark-subtle <%= 'active' if params[:category] == cat[:param] %>"
+       href="/furnitures?category=<%= cat[:param] %>"><%= cat[:name] %></a>
+    <% end %>
   </div>
   <div class="cards mt-4">
     <% @furnitures.each do |furniture| %>

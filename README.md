@@ -8,9 +8,8 @@ This is a marketplace app (Airbnb clone) built with Ruby on Rails. The applicati
 
 | Home Page                                 | Furniture Listing                           | Booking Page                              |
 |--------------------------------------------|---------------------------------------------|-------------------------------------------|
-| ![Home Page](docs/images/homepage.png)     | ![Listing](docs/images/listing.png)         | ![Booking](docs/images/booking.png)       |
+| <img src="docs/images/homepage.png" alt="Home Page" width="400"/>     |  <img src="docs/images/listing.png" alt="Listing" width="400"/>         |  <img src="docs/images/booking.png" alt="Booking" width="400"/>       |
 
-> _Add your actual screenshots to the `docs/images/` directory and update the filenames above as needed._
 
 ---
 

@@ -34,20 +34,19 @@ class FurnituresController < ApplicationController
     @owner = @furniture.user
   end
 
- def create
-  @furniture = Furniture.new(furniture_params)
-  @furniture.user = current_user
+  def create
+    @furniture = Furniture.new(furniture_params)
+    @furniture.user = current_user
 
-  if @furniture.save
-    redirect_to owner_rentals_path, notice: "Furniture created!"
-  else
-    @rentals_as_owner = current_user.rentals_as_owner
-    @furnitures = current_user.furnitures
+    if @furniture.save
+      redirect_to owner_rentals_path, notice: "Furniture created!"
+    else
+      @rentals_as_owner = current_user.rentals_as_owner
+      @furnitures = current_user.furnitures
 
-    render 'owner/rentals/index', status: :unprocessable_entity
+      render 'owner/rentals/index', status: :unprocessable_entity
+    end
   end
-end
-
 
   private
 

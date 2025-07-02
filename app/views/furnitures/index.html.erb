@@ -8,9 +8,10 @@
   <div class="d-flex justify-content-between align-items-center m-3">
     <h1>Furnitures</h1>
   </div>
-  <div class="category-list mx-auto p-2">
-    <% categories = [
-    {name: "Mirrors", param: "mirror"},
+  <%= turbo_frame_tag :category_list do %>
+    <div class="category-list mx-auto p-2">
+      <% categories = [
+        {name: "Mirrors", param: "mirror"},
     {name: "Gardens", param: "garden"},
     {name: "Lamps", param: "lamp"},
     {name: "Matresses", param: "matress"},
@@ -21,23 +22,24 @@
     {name: "Kitchen", param: "kitchen"},
     {name: "Vanitory", param: "vanitory"},
     {name: "Sofa", param: "sofa"}
-  ] %>
-    <% categories.each do |cat| %>
-      <a class="btn btn-light rounded-pill border-1 border-dark-subtle <%= 'active' if params[:category] == cat[:param] %>"
+    ] %>
+      <% categories.each do |cat| %>
+        <a class="btn btn-light rounded-pill border-1 border-dark-subtle <%= 'active' if params[:category] == cat[:param] %>"
        href="/furnitures?category=<%= cat[:param] %>"><%= cat[:name] %></a>
-    <% end %>
-  </div>
-  <div class="cards mt-4">
-    <% @furnitures.each do |furniture| %>
-      <div class="card-trip">
-        <%=image_tag cl_image_path("#{furniture.photo.key}", width: 280, height: 250,  crop: :fill), alt: "" %>
-        <div class="card-trip-infos">
-          <div><%= furniture.name %></div>
-          <div>¥<%= furniture.price %></div>
+      <% end %>
+    </div>
+    <div class="cards mt-4">
+      <% @furnitures.each do |furniture| %>
+        <div class="card-trip">
+          <%=image_tag cl_image_path("#{furniture.photo.key}", width: 280, height: 250,  crop: :fill), alt: "" %>
+          <div class="card-trip-infos">
+            <div><%= furniture.name %></div>
+            <div>¥<%= furniture.price %></div>
+          </div>
+          <%= link_to '', furniture_path(furniture), class:"card-link", data: { turbo_frame: '_top'} %>
         </div>
-        <%= link_to '', furniture_path(furniture), class:"card-link" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="pages-list"><%= paginate @furnitures %></div>
   </div>
-  <div class="pages-list"><%= paginate @furnitures %></div>
-</div>
+<% end %>

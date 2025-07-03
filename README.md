@@ -6,14 +6,12 @@ This is a marketplace app (Airbnb clone) built with Ruby on Rails. The applicati
 
 ## Screenshots
 
-| Home Page                                 | Furniture Listing                           | Booking Page                              |
-|--------------------------------------------|---------------------------------------------|-------------------------------------------|
 
-<p align="center">
-  <img src="docs/images/homepage.png" alt="Home Page" width="200"/>
-  <img src="docs/images/listing.png" alt="Listing" width="200"/>
-  <img src="docs/images/booking.png" alt="Booking" width="200"/>
-</p>
+| Home Page | Listing | Booking |
+|-----------|---------|---------|
+| <img src="docs/images/homepage.png" alt="Home Page" width="200"/> | <img src="docs/images/listing.png" alt="Listing" width="200"/> | <img src="docs/images/booking.png" alt="Booking" width="200"/> |
+
+
 
 [Homie](https://homie-635a09e6c6b5.herokuapp.com/)
 ---

@@ -108,9 +108,9 @@ Some features (e.g., image uploads with Cloudinary) require environment variable
 
 ## Contributers
 
-[Tsering Lama] (https://github.com/turibhai)
-[Owen Nelson] (https://github.com/owenswebdevelopment)
-[Hayao Mori] (https://github.com/HmoriKLTA)
+[Tsering Lama](https://github.com/turibhai)
+[Owen Nelson](https://github.com/owenswebdevelopment)
+[Hayao Mori](https://github.com/HmoriKLTA)
 
 ---
 

@@ -54,7 +54,7 @@ This is a marketplace app (Airbnb clone) built with Ruby on Rails. The applicati
 #### 1. Clone the repository
 
 ```sh
-git clone https://github.com/owenswebdevelopment/furniture-rental-app.git
+git clone git@github.com:turibhai/tsering-furniture-rental-app.git
 cd furniture-rental-app
 ```
 
@@ -106,9 +106,11 @@ Some features (e.g., image uploads with Cloudinary) require environment variable
 
 ---
 
-## License
+## Contributers
 
-This project is licensed under the MIT License.
+[Tsering Lama] (https://github.com/turibhai)
+[Owen Nelson] (https://github.com/owenswebdevelopment)
+[Hayao Mori] (https://github.com/HmoriKLTA)
 
 ---
 

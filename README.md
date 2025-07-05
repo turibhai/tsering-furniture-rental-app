@@ -9,7 +9,7 @@ This is a marketplace app (Airbnb clone) built with Ruby on Rails. The applicati
 
 | Home Page | Listing | Booking |
 |-----------|---------|---------|
-| <img src="docs/images/homepage.png" alt="Home Page" width="200"/> | <img src="docs/images/listing.png" alt="Listing" width="200"/> | <img src="docs/images/booking.png" alt="Booking" width="200"/> |
+| <img src="docs/images/homepage.png" alt="Home Page" width="200"/> | <img src="docs/images/listing.png" alt="Listing" width="200"/> | <img src="docs/images/booking.Png" alt="Booking" width="200"/> |
 
 
 
@@ -108,9 +108,9 @@ Some features (e.g., image uploads with Cloudinary) require environment variable
 
 ## Contributers
 
-[Tsering Lama] (https://github.com/turibhai)
-[Owen Nelson] (https://github.com/owenswebdevelopment)
-[Hayao Mori] (https://github.com/HmoriKLTA)
+- [Tsering Lama] (https://github.com/turibhai)
+- [Owen Nelson] (https://github.com/owenswebdevelopment)
+- [Hayao Mori] (https://github.com/HmoriKLTA)
 
 ---
 
